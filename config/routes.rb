@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :pets
   get 'home/index'
   devise_for :owners, controllers: {registrations: 'owners/registrations'}
   root 'home#index'
