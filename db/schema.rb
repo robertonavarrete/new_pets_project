@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_17_155549) do
+ActiveRecord::Schema.define(version: 2020_02_17_172456) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,12 @@ ActiveRecord::Schema.define(version: 2020_02_17_155549) do
     t.integer "subtotal"
     t.integer "tax"
     t.integer "total_value"
+  end
+
+  create_table "breeds", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "comentarios", id: false, force: :cascade do |t|
@@ -35,6 +41,12 @@ ActiveRecord::Schema.define(version: 2020_02_17_155549) do
     t.string "name", limit: 100
     t.string "rut", limit: 9
     t.string "address", limit: 100
+  end
+
+  create_table "kinds", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "owners", force: :cascade do |t|
