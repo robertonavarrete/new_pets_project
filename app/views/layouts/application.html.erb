@@ -10,6 +10,13 @@
   </head>
 
   <body>
+    <%if owner_signed_in?%>
+    hola: <%=current_owner.email%>
+    <%=link_to "salir", destroy_owner_session_path, method: :delete%>
+    <%=link_to "Perfil",edit_owner_registration_path%>
+    <%else%>
+    <%=link_to "login", new_owner_session_path%>
+    <%end%>
     <p class="notice"><%= notice %></p>
        <p class="alert"><%= alert %></p>
     <%= yield %>

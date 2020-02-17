@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_17_172456) do
+ActiveRecord::Schema.define(version: 2020_02_17_173648) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,23 @@ ActiveRecord::Schema.define(version: 2020_02_17_172456) do
     t.index ["reset_password_token"], name: "index_owners_on_reset_password_token", unique: true
   end
 
+  create_table "pets", force: :cascade do |t|
+    t.bigint "kind_id"
+    t.bigint "owner_id"
+    t.string "name"
+    t.integer "birth_day"
+    t.integer "birth_month"
+    t.integer "birth_year"
+    t.bigint "breed_id"
+    t.string "picture"
+    t.string "pet_registration_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["breed_id"], name: "index_pets_on_breed_id"
+    t.index ["kind_id"], name: "index_pets_on_kind_id"
+    t.index ["owner_id"], name: "index_pets_on_owner_id"
+  end
+
   create_table "post", id: false, force: :cascade do |t|
     t.serial "id", null: false
     t.string "nombre", limit: 10
@@ -71,4 +88,7 @@ ActiveRecord::Schema.define(version: 2020_02_17_172456) do
     t.string "titulo", limit: 20
   end
 
+  add_foreign_key "pets", "breeds"
+  add_foreign_key "pets", "kinds"
+  add_foreign_key "pets", "owners"
 end
