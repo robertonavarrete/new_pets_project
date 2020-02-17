@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Pet:</strong>
+  <%= @deworming.pet %>
+</p>
+
+<p>
+  <strong>Deworming date:</strong>
+  <%= @deworming.deworming_date %>
+</p>
+
+<p>
+  <strong>Place:</strong>
+  <%= @deworming.place %>
+</p>
+
+<%= link_to 'Edit', edit_deworming_path(@deworming) %> |
+<%= link_to 'Back', dewormings_path %>

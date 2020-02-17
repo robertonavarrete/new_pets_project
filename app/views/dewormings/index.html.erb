@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Dewormings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Pet</th>
+      <th>Deworming date</th>
+      <th>Place</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @dewormings.each do |deworming| %>
+      <tr>
+        <td><%= deworming.pet %></td>
+        <td><%= deworming.deworming_date %></td>
+        <td><%= deworming.place %></td>
+        <td><%= link_to 'Show', deworming %></td>
+        <td><%= link_to 'Edit', edit_deworming_path(deworming) %></td>
+        <td><%= link_to 'Destroy', deworming, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Deworming', new_deworming_path %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_17_173648) do
+ActiveRecord::Schema.define(version: 2020_02_17_182637) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,15 @@ ActiveRecord::Schema.define(version: 2020_02_17_173648) do
     t.string "name", limit: 100
     t.string "rut", limit: 9
     t.string "address", limit: 100
+  end
+
+  create_table "dewormings", force: :cascade do |t|
+    t.bigint "pet_id"
+    t.date "deworming_date"
+    t.string "place"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pet_id"], name: "index_dewormings_on_pet_id"
   end
 
   create_table "kinds", force: :cascade do |t|
@@ -88,7 +97,19 @@ ActiveRecord::Schema.define(version: 2020_02_17_173648) do
     t.string "titulo", limit: 20
   end
 
+  create_table "vaccines", force: :cascade do |t|
+    t.bigint "pet_id"
+    t.date "vaccine_date"
+    t.string "type_of_dose"
+    t.string "place"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pet_id"], name: "index_vaccines_on_pet_id"
+  end
+
+  add_foreign_key "dewormings", "pets"
   add_foreign_key "pets", "breeds"
   add_foreign_key "pets", "kinds"
   add_foreign_key "pets", "owners"
+  add_foreign_key "vaccines", "pets"
 end
